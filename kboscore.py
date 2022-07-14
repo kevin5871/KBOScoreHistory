@@ -2,7 +2,7 @@
 from bs4 import BeautifulSoup
 import requests
 import calendar
-def kboscorelist(teamname, month, year) :
+def kboscorelist(teamname, year, month) :
     def deleteBalise(string):
         for i in range(2):
             # identifying  <
@@ -50,16 +50,16 @@ def kboscorelist(teamname, month, year) :
                     res = deleteBalise(str(res))
                 tmplst.append(deleteBalise(str(res)))
             #print(tmplst)
-        list.append(" ".join(tmplst).replace('[','').replace(']',''))
+        list.append(str(i) + '일 | ' + " ".join(tmplst).replace('[','').replace(']',''))
     #print(list)
     return list
 if __name__ == "__main__" :
     teamname = input()
     year = input()
     month = input()
-    list = kboscorelist(teamname, month, year)
+    list = kboscorelist(teamname, year, month)
     print('%s년 %s월 %s 경기 결과 - '%(year, month, teamname))
     print('-'*30)
     for i in range(0, len(list), 1) :
-        print(str(i+1) + '일 ' + list[i])
+        print(list[i])
 #print(list)
