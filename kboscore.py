@@ -50,7 +50,7 @@ def kboscorelist(teamname, year, month) :
                     res = deleteBalise(str(res))
                 tmplst.append(deleteBalise(str(res)))
             #print(tmplst)
-        list.append(str(i) + '일 | ' + " ".join(tmplst).replace('[','').replace(']',''))
+        list.append([str(i), " ".join(tmplst).replace('[','').replace(']','')])
     #print(list)
     return list
 if __name__ == "__main__" :
@@ -61,5 +61,6 @@ if __name__ == "__main__" :
     print('%s년 %s월 %s 경기 결과 - '%(year, month, teamname))
     print('-'*30)
     for i in range(0, len(list), 1) :
-        print(list[i])
+        print(list[i][0] + '일 | ' + list[i][1])
+
 #print(list)
